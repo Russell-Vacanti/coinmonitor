@@ -7,14 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Coin Monitor</title>
-  <script src="./lib/jquery-3.3.1.min.js"></script>
-  <script src="./lib/Chart.min.js"></script>
-  <script src="./lib/moment.min.js"></script>
-  <script src="./lib/util.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-  <script src="popup.js"></script>
 
 </head>
 
@@ -22,7 +16,7 @@
   <div style="width:500px;">
 
     <div class="alert alert-info" role="alert">
-      coinmonitor
+      Coin Monitor <br /> Stable Build v1.0
     </div>
     <ul class="nav">
       <li class="nav-item">
@@ -48,11 +42,19 @@
           <hr>
           <p class="mb-0" id="coinBuy">error</p>
         </div>
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-info disabled">Coin History</button>
-          <button type="button" class="btn btn-info" id="histM">Minute</button>
-          <button type="button" class="btn btn-info" id="histH">Hour</button>
-          <button type="button" class="btn btn-info" id="histD">Day</button>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-outline-info">
+            <input type="radio" name="options" autocomplete="off" checked> Coin History
+          </label>
+          <label class="btn btn-outline-info">
+            <input type="radio" name="options" id="histM" autocomplete="off"> Minute
+          </label>
+          <label class="btn btn-outline-info">
+            <input type="radio" name="options" id="histH" autocomplete="off"> Hour
+          </label>
+          <label class="btn btn-outline-info">
+            <input type="radio" name="options" id="histD" autocomplete="off"> Day
+          </label>
         </div>
         <hr>
         <canvas id="coinChart" height="100"></canvas>
@@ -63,12 +65,11 @@
 
     <div class="card" id="card-settings" style="display: none;">
       <div class="card-body">
-        <div class="alert alert-info" role="alert">
-          <p>Settings</p>
-          <hr>
-          <p class="mb-0">Setup price notifications and other fun stuff.</p>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-info" id="chnTab">View Changes</button>
+          <button type="button" class="btn btn-info" id="gitTab">Github Repo</button>
         </div>
-        <form>
+        <!--form>
           <div class="form-group mx-sm-3 mb-2">
             <select class="form-control" id="set-pageOpen">
               <option>BTC</option>
@@ -78,12 +79,19 @@
             </select>
           </div>
           <button class="btn btn-primary mb-2" id="saveSettings">Save Settings</button>
-        </form>
+        </form-->
       </div>
     </div>
 
   </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+  <script src="./lib/jquery-3.3.1.min.js"></script>
+  <script src="./lib/Chart.min.js"></script>
+  <script src="./lib/moment.min.js"></script>
+  <script src="./lib/util.js"></script>
+
+  <script src="popup.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
