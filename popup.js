@@ -148,17 +148,22 @@ const updateCoinCard = (typ) => {
 }
 
 const changeTab = (typ) => {
+  var old = null;
   getData('COIN', (re) => {
-    document.getElementById(re).className = "nav-link";
+    old = re
+    if (typ !== old) {
+      document.getElementById(re).className = "nav-link";
+    }
   });
 
   document.getElementById(typ).className = "nav-link disabled";
-
-  saveData('COIN', typ);
-  if (typ == 'SET') {
-    updateSettingsCard(typ);
-  } else {
-    updateCoinCard(typ);
+  if (typ !== old) {
+    saveData('COIN', typ);
+    if (typ == 'SET') {
+      updateSettingsCard(typ);
+    } else {
+      updateCoinCard(typ);
+    }
   }
 }
 
