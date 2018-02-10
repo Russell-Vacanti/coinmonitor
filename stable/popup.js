@@ -216,9 +216,7 @@ const addListeners = () => {
   });
 
   //button to save settings
-  document.getElementById('saveSettings').addEventListener('click', () => {
-    saveSettings();
-  });
+  //document.getElementById('saveSettings').addEventListener('click', () => {saveSettings();});
 }
 
 document.addEventListener('DOMContentLoaded', () => {
