@@ -37,6 +37,8 @@ var coinDiff = 0;
 var coinBuy = 0;
 var coinTime = 'm';
 
+const version = "1.0.0"
+
 const inquire = (cat, tp, callback) => {
   var apiUrl = "https://min-api.cryptocompare.com/data/";
   if (tp == 'price') {
@@ -195,6 +197,24 @@ const addListeners = () => {
       url: 'https://www.cryptocompare.com/'
     });
   });
+  //button to open github
+  document.getElementById('gitTab').addEventListener('click', () => {
+    chrome.tabs.create({
+      url: 'https://github.com/Russell-Vacanti/coinmonitor'
+    });
+  });
+  //button to open changelog
+  document.getElementById('chnTab').addEventListener('click', () => {
+    chrome.tabs.create({
+      url: 'https://github.com/Russell-Vacanti/coinmonitor'
+    });
+  });
+
+  //button to check for update
+  document.getElementById('updTab').addEventListener('click', () => {
+    checkForUpdate(version);
+  });
+
   //button to save settings
   document.getElementById('saveSettings').addEventListener('click', () => {
     saveSettings();

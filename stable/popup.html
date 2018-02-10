@@ -16,7 +16,7 @@
   <div style="width:500px;">
 
     <div class="alert alert-info" role="alert">
-      coinmonitor
+      Coin Monitor <br /> Stable Build v1.0
     </div>
     <ul class="nav">
       <li class="nav-item">
@@ -65,12 +65,14 @@
 
     <div class="card" id="card-settings" style="display: none;">
       <div class="card-body">
-        <div class="alert alert-info" role="alert">
-          <p>Settings</p>
-          <hr>
-          <p class="mb-0">Setup price notifications and other fun stuff.</p>
+        <div class="alert alert-dark" role="alert" id="updTab">
+          <a href="#">Check for Update</a>
         </div>
-        <form>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-info" id="chnTab">View Changes</button>
+          <button type="button" class="btn btn-info" id="gitTab">Github Repo</button>
+        </div>
+        <!--form>
           <div class="form-group mx-sm-3 mb-2">
             <select class="form-control" id="set-pageOpen">
               <option>BTC</option>
@@ -80,7 +82,7 @@
             </select>
           </div>
           <button class="btn btn-primary mb-2" id="saveSettings">Save Settings</button>
-        </form>
+        </form-->
       </div>
     </div>
 
