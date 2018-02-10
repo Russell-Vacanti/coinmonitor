@@ -6,9 +6,9 @@ const coinNames = {
 };
 
 const coinHistTypes = {
-  'm': 'minute',
-  'h': 'hour',
-  'd': 'day'
+  'm': ['minute', 'histM'],
+  'h': ['hour', 'histH'],
+  'd': ['day', 'histD']
 };
 
 const coinColors = {
@@ -45,7 +45,7 @@ const inquire = (cat, tp, callback) => {
     getData('HIST', (re) => {
       coinTime = re;
     });
-    apiUrl = apiUrl + "histo" + coinHistTypes[coinTime] + "?fsym=" + cat + "&tsym=USD&limit=60&aggregate=3&e=CCCAGG";
+    apiUrl = apiUrl + "histo" + coinHistTypes[coinTime][0] + "?fsym=" + cat + "&tsym=USD&limit=60&aggregate=3&e=CCCAGG";
   }
   $.ajax({
     async: true,
@@ -120,6 +120,10 @@ const getPriceData = (typ) => {
 }
 
 const changeGraphTime = (newTime) => {
+  getData('HIST', (oldtime) => {
+    document.getElementById(coinHistTypes[coinTime][1]).className = "btn btn-info";
+  });
+  document.getElementById(coinHistTypes[newTime][1]).className = "btn btn-info disabled";
   saveData('HIST', newTime);
   coinTime = newTime;
   getData('COIN', (re) => {
@@ -154,7 +158,7 @@ const changeTab = (typ, forceUpdate = false) => {
     if (typ !== old) {
       document.getElementById(re).className = "nav-link";
     }
-    document.getElementById(typ).className = "nav-link disabled";
+    document.getElementById(typ).className = "nav-link disabled"; //border-top border-left border-right";
     saveData('COIN', typ);
     if (typ !== old || forceUpdate) {
       if (typ == 'SET') {
