@@ -10,7 +10,7 @@ const saveData = (key, data) => {
   chrome.storage.sync.set(items);
 }
 
-const checkForUpdate = (currentVersion) => {
+const checkForUpdate = (callback) => {
   var apiUrl = "https://raw.githubusercontent.com/Russell-Vacanti/coinmonitor/master/stable/";
   apiUrl = apiUrl + "version.json"
   $.ajax({
@@ -18,7 +18,7 @@ const checkForUpdate = (currentVersion) => {
     type: "GET",
     url: apiUrl,
     success: function(result) {
-      console.log(result);
+      callback(JSON.parse(result));
     }
   });
 }

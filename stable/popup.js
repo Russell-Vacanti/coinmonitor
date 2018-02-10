@@ -212,7 +212,17 @@ const addListeners = () => {
 
   //button to check for update
   document.getElementById('updTab').addEventListener('click', () => {
-    checkForUpdate(version);
+    checkForUpdate((result) => {
+      if (version !== result['version']) {
+        document.getElementById('updTab').className = 'alert alert-warning';
+        var newText = 'Please download the new version<hr><ul class="list-group">';
+        for (var i = 0; i < result['changes'].length; i++) {
+          newText += '<li class="list-group-item disabled">' + result['changes'][i] + '</li>';
+        }
+        newText += '</ul>'
+        document.getElementById('updTab').innerText = newText;
+      }
+    });
   });
 
   //button to save settings
