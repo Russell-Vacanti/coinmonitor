@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Coin Monitor</title>
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="Chart.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="moment.min.js"></script>
+  <script src="popup.js"></script>
+
+</head>
+
+<body>
+  <div style="width:500px;">
+
+    <div class="alert alert-info" role="alert">
+      coinmonitor
+    </div>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="BTC">Bitcoin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="BCH">BTC Cash</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="LTC">Litecoin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="ETH">Ethereum</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="SET">Settings</a>
+      </li>
+    </ul>
+    <div class="card" id="card-coin">
+      <div class="card-body">
+        <div class="alert alert-danger" role="alert" id="coinStatus">
+          <p>Current Price</p>
+          <hr>
+          <p class="mb-0" id="coinBuy">error</p>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-info disabled">Coin History</button>
+          <button type="button" class="btn btn-info" id="histM">Minute</button>
+          <button type="button" class="btn btn-info" id="histH">Hour</button>
+          <button type="button" class="btn btn-info" id="histD">Day</button>
+        </div>
+        <hr>
+        <canvas id="coinChart" height="100"></canvas>
+        <hr>
+        <button type="button" class="btn btn-info" id="coinTab">Open CryptoCompare</button>
+      </div>
+    </div>
+
+    <div class="card" id="card-settings" style="display: none;">
+      <div class="card-body">
+        <div class="alert alert-info" role="alert">
+          <p>Settings</p>
+          <hr>
+          <p class="mb-0">Setup price notifications and other fun stuff.</p>
+        </div>
+        <form>
+          <div class="form-group mx-sm-3 mb-2">
+            <select class="form-control" id="set-pageOpen">
+              <option>BTC</option>
+              <option>BCH</option>
+              <option>LTC</option>
+              <option>ETH</option>
+            </select>
+          </div>
+          <button class="btn btn-primary mb-2" id="saveSettings">Save Settings</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
