@@ -9,16 +9,3 @@ const saveData = (key, data) => {
   items['COINMONITOR-' + key] = data;
   chrome.storage.sync.set(items);
 }
-
-const checkForUpdate = (callback) => {
-  var apiUrl = "https://raw.githubusercontent.com/Russell-Vacanti/coinmonitor/master/stable/";
-  apiUrl = apiUrl + "version.json"
-  $.ajax({
-    async: true,
-    type: "GET",
-    url: apiUrl,
-    success: function(result) {
-      callback(JSON.parse(result));
-    }
-  });
-}

@@ -15,7 +15,6 @@
   "permissions": [
     "activeTab",
     "storage",
-    "https://min-api.cryptocompare.com",
-    "https://raw.githubusercontent.com/"
+    "https://min-api.cryptocompare.com"
   ]
 }

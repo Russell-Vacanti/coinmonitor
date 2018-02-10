@@ -37,8 +37,6 @@ var coinDiff = 0;
 var coinBuy = 0;
 var coinTime = 'm';
 
-const version = "1.0.0"
-
 const inquire = (cat, tp, callback) => {
   var apiUrl = "https://min-api.cryptocompare.com/data/";
   if (tp == 'price') {
@@ -207,21 +205,6 @@ const addListeners = () => {
   document.getElementById('chnTab').addEventListener('click', () => {
     chrome.tabs.create({
       url: 'https://github.com/Russell-Vacanti/coinmonitor'
-    });
-  });
-
-  //button to check for update
-  document.getElementById('updTab').addEventListener('click', () => {
-    checkForUpdate((result) => {
-      if (version !== result['version']) {
-        document.getElementById('updTab').className = 'alert alert-warning';
-        var newText = 'Please download the new version<hr><ul class="list-group">';
-        for (var i = 0; i < result['changes'].length; i++) {
-          newText += '<li class="list-group-item disabled">' + result['changes'][i] + '</li>';
-        }
-        newText += '</ul>'
-        document.getElementById('updTab').innerText = newText;
-      }
     });
   });
 
