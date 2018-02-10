@@ -123,7 +123,7 @@ const changeGraphTime = (newTime) => {
   saveData('HIST', newTime);
   coinTime = newTime;
   getData('COIN', (re) => {
-    changeTab(re);
+    changeTab(re, forceUpdate = true);
   });
 }
 
@@ -147,24 +147,23 @@ const updateCoinCard = (typ) => {
   }
 }
 
-const changeTab = (typ) => {
+const changeTab = (typ, forceUpdate = false) => {
   var old = null;
   getData('COIN', (re) => {
-    old = re
+    old = re;
     if (typ !== old) {
       document.getElementById(re).className = "nav-link";
     }
-  });
-
-  document.getElementById(typ).className = "nav-link disabled";
-  if (typ !== old) {
+    document.getElementById(typ).className = "nav-link disabled";
     saveData('COIN', typ);
-    if (typ == 'SET') {
-      updateSettingsCard(typ);
-    } else {
-      updateCoinCard(typ);
+    if (typ !== old || forceUpdate) {
+      if (typ == 'SET') {
+        updateSettingsCard(typ);
+      } else {
+        updateCoinCard(typ);
+      }
     }
-  }
+  });
 }
 
 const saveSettings = () => {
