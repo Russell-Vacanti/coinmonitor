@@ -109,11 +109,11 @@ const getPriceData = (typ) => {
 
 const changeGraphTime = (newTime) => {
   getData('HIST', (oldtime) => {
-    document.getElementById(coinHistTypes[coinTime][1]).className = "btn btn-info";
+    document.getElementById(coinHistTypes[oldtime][1]).parentNode.className = "btn btn-outline-info";
+    document.getElementById(coinHistTypes[newTime][1]).parentNode.className = "btn btn-outline-info active";
+    saveData('HIST', newTime);
+    coinTime = newTime;
   });
-  document.getElementById(coinHistTypes[newTime][1]).className = "btn btn-info disabled";
-  saveData('HIST', newTime);
-  coinTime = newTime;
   getData('COIN', (re) => {
     changeTab(re, forceUpdate = true);
   });
@@ -165,29 +165,29 @@ const saveSettings = () => {
 const addListeners = () => {
   //add listeners for coin tabs
   document.getElementById('BTC').addEventListener('click', () => {
-    changeTab('BTC')
+    changeTab('BTC');
   });
   document.getElementById('BCH').addEventListener('click', () => {
-    changeTab('BCH')
+    changeTab('BCH');
   });
   document.getElementById('LTC').addEventListener('click', () => {
-    changeTab('LTC')
+    changeTab('LTC');
   });
   document.getElementById('ETH').addEventListener('click', () => {
-    changeTab('ETH')
+    changeTab('ETH');
   });
   document.getElementById('SET').addEventListener('click', () => {
-    changeTab('SET')
+    changeTab('SET');
   });
   //add listeners for graph
   document.getElementById('histM').addEventListener('click', () => {
-    changeGraphTime('m')
+    changeGraphTime('m');
   });
   document.getElementById('histH').addEventListener('click', () => {
-    changeGraphTime('h')
+    changeGraphTime('h');
   });
   document.getElementById('histD').addEventListener('click', () => {
-    changeGraphTime('d')
+    changeGraphTime('d');
   });
   //button to open cryptocompare
   document.getElementById('coinTab').addEventListener('click', () => {
@@ -202,16 +202,18 @@ const addListeners = () => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  saveData('COIN', 'LTC');
+  saveData('COIN', 'BTC');
   saveData('HIST', 'm');
 
   addListeners();
   getData('DEF-COIN', (typ) => {
+    console.log(typ);
     if (typ == undefined) {
       saveData('DEF-COIN', 'BTC');
       changeTab('BTC');
     } else {
       changeTab(typ);
     }
+    changeGraphTime('m');
   });
 });
