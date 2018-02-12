@@ -101,7 +101,7 @@ const getPriceData = (typ) => {
     var labelData = [];
     for (var i = 0; i < data.length; i += 1) {
       prices.push(data[i]['high']);
-      labelData.push(data[i]['time']);
+      labelData.push(moment(data[i]['time']).format('YYYY MM DD'));
     }
     makeChart(prices, labelData, typ);
   });
@@ -204,7 +204,7 @@ const addListeners = () => {
   //button to open changelog
   document.getElementById('chnTab').addEventListener('click', () => {
     chrome.tabs.create({
-      url: 'https://github.com/Russell-Vacanti/coinmonitor'
+      url: 'https://github.com/Russell-Vacanti/coinmonitor/commits/master'
     });
   });
 
