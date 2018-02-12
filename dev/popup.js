@@ -101,7 +101,7 @@ const getPriceData = (typ) => {
     var labelData = [];
     for (var i = 0; i < data.length; i += 1) {
       prices.push(data[i]['high']);
-      labelData.push(moment(data[i]['time']).format('YYYY MM DD'));
+      labelData.push("Timestamp: " + data[i]['time']);
     }
     makeChart(prices, labelData, typ);
   });
