@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
 
-  "name": "Coin Monitor",
+  "name": "Coin Monitor [DEV]",
   "description": "Track the prices of cryptocurrency quickly",
-  "version": "1.0",
+  "version": "1.8",
   "icons" :
   {
     "128" : "icon.png"
