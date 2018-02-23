@@ -42,22 +42,24 @@
           <hr>
           <p class="mb-0" id="coinBuy">JavaScript Error - See Console</p>
         </div>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-outline-info">
+        <div id="chartHolder">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-info">
             <input type="radio" name="options" autocomplete="off" checked> Coin History
           </label>
-          <label class="btn btn-outline-info">
+            <label class="btn btn-outline-info">
             <input type="radio" name="options" id="histM" autocomplete="off"> Minute
           </label>
-          <label class="btn btn-outline-info">
+            <label class="btn btn-outline-info">
             <input type="radio" name="options" id="histH" autocomplete="off"> Hour
           </label>
-          <label class="btn btn-outline-info">
+            <label class="btn btn-outline-info">
             <input type="radio" name="options" id="histD" autocomplete="off"> Day
           </label>
+          </div>
+          <hr>
+          <canvas id="coinChart" height="100"></canvas>
         </div>
-        <hr>
-        <canvas id="coinChart" height="100"></canvas>
         <hr>
         <button type="button" class="btn btn-info" id="coinTab">Open CryptoCompare</button>
       </div>

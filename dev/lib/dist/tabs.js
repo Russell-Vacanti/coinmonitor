@@ -46,18 +46,22 @@ const updateCoinCard = (typ) => {
   initCoinChart(typ);
 
   document.getElementById("coinBuy").innerText = "Error Getting Price Data";
+  document.getElementById("coinStatus").className = "alert alert-dark";
+  //hide chart if no price data
+  document.getElementById('chartHolder').style.display = 'none';
   inquire(typ, 'price', (result) => {
+    //show chart when we get price data back
+    document.getElementById('chartHolder').style.display = 'block';
     data = result['USD'];
     document.getElementById("coinBuy").innerText = "$" + data;
+    if (0 < 0) {
+      document.getElementById("coinStatus").className = "alert alert-success";
+    } else if (0 > 0) {
+      document.getElementById("coinStatus").className = "alert alert-danger";
+    } else {
+      document.getElementById("coinStatus").className = "alert alert-warning";
+    }
   });
-
-  if (0 < 0) {
-    document.getElementById("coinStatus").className = "alert alert-success";
-  } else if (0 > 0) {
-    document.getElementById("coinStatus").className = "alert alert-danger";
-  } else {
-    document.getElementById("coinStatus").className = "alert alert-warning";
-  }
 }
 
 const initTabs = () => {
