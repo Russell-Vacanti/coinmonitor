@@ -1,10 +1,6 @@
-const getData = (key, callback, deft = undefined) => {
+const getData = (key, callback) => {
   chrome.storage.sync.get('COINMONITOR-' + key, (items) => {
-    if (items['COINMONITOR-' + key] == undefined) {
-      callback(deft);
-    } else {
-      callback(items['COINMONITOR-' + key]);
-    }
+    callback(items['COINMONITOR-' + key]);
   });
 }
 

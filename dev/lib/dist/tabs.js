@@ -24,12 +24,8 @@ const changeTab = (typ, forceUpdate = false) => {
 
 const saveTabTo = (num) => {
   var coinID = document.getElementById("t" + num).value;
-  for (var i = 0; i < coinIDs; i++) {
-    if (coinIDs[i] == coinID) {
-      saveData('TAB-' + num, coinNames[i]);
-      coinTabs[num] = coinNames[i];
-    }
-  }
+  saveData('TAB-' + num, coinID);
+  console.log("Saving Tab " + num + " as " + coinID);
   document.getElementById("c" + num).innerText = coinNames[coinID];
 }
 
@@ -64,20 +60,35 @@ const updateCoinCard = (typ) => {
   });
 }
 
+const initTabNum = (n, vle, dft) => {
+  var tabVal = vle;
+  if (tabVal == undefined) {
+    tabVal = dft;
+  }
+  coinTabs[n] = tabVal;
+  console.log("Changing Tab " + n + " name to " + coinNames[coinTabs[n]]);
+  document.getElementById("c" + n).innerText = coinNames[coinTabs[n]];
+}
+
 const initTabs = () => {
   saveData('COIN', '0');
   saveData('HIST', 'm');
-
-  getData('TAB-0', deft = 'BTC', (vle) => {
-    coinTabs[0] = vle;
+  // initialize coin tabs
+  var defaultCoinTabs = ['BTC', 'BCH', 'LTC', 'ETH'];
+  getData('TAB-0', (vle) => {
+    console.log("Loaded Tab " + '0' + " as " + vle);
+    initTabNum(0, vle, defaultCoinTabs[0]);
   });
-  getData('TAB-1', deft = 'BCH', (vle) => {
-    coinTabs[1] = vle;
+  getData('TAB-1', (vle) => {
+    console.log("Loaded Tab " + '1' + " as " + vle);
+    initTabNum(1, vle, defaultCoinTabs[1]);
   });
-  getData('TAB-2', deft = 'LTC', (vle) => {
-    coinTabs[2] = vle;
+  getData('TAB-2', (vle) => {
+    console.log("Loaded Tab " + '2' + " as " + vle);
+    initTabNum(2, vle, defaultCoinTabs[2]);
   });
-  getData('TAB-3', deft = 'ETH', (vle) => {
-    coinTabs[3] = vle;
+  getData('TAB-3', (vle) => {
+    console.log("Loaded Tab " + '3' + " as " + vle);
+    initTabNum(3, vle, defaultCoinTabs[3]);
   });
 }

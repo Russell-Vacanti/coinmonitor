@@ -15,6 +15,7 @@ const addListeners = () => {
   document.getElementById('c4').addEventListener('click', () => {
     changeTab('4');
   });
+
   //add listeners for graph
   document.getElementById('histM').addEventListener('click', () => {
     changeGraphTime('m');
@@ -25,12 +26,14 @@ const addListeners = () => {
   document.getElementById('histD').addEventListener('click', () => {
     changeGraphTime('d');
   });
+
   //button to open cryptocompare
   document.getElementById('coinTab').addEventListener('click', () => {
     chrome.tabs.create({
       url: 'https://www.cryptocompare.com/'
     });
   });
+
   //button to open github
   document.getElementById('gitTab').addEventListener('click', () => {
     chrome.tabs.create({
