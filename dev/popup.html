@@ -16,23 +16,23 @@
   <div style="width:500px;">
 
     <div class="alert alert-info" role="alert">
-      Coin Monitor <br /> Dev Build v1.0
+      Coin Monitor <a href="#" id="gitTab">[Github]</a> <br />Dev Build v1.7
     </div>
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="#" id="BTC">Bitcoin</a>
+        <a class="nav-link" href="#" id="c0">Bitcoin</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" id="BCH">BTC Cash</a>
+        <a class="nav-link" href="#" id="c1">BTC Cash</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" id="LTC">Litecoin</a>
+        <a class="nav-link" href="#" id="c2">Litecoin</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" id="ETH">Ethereum</a>
+        <a class="nav-link" href="#" id="c3">Ethereum</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" id="SET">Settings</a>
+        <a class="nav-link" href="#" id="c4">More</a>
       </li>
     </ul>
     <div class="card" id="card-coin">
@@ -65,21 +65,38 @@
 
     <div class="card" id="card-settings" style="display: none;">
       <div class="card-body">
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-info" id="chnTab">View Changes</button>
-          <button type="button" class="btn btn-info" id="gitTab">Github Repo</button>
-        </div>
-        <!--form>
-          <div class="form-group mx-sm-3 mb-2">
-            <select class="form-control" id="set-pageOpen">
-              <option>BTC</option>
-              <option>BCH</option>
-              <option>LTC</option>
-              <option>ETH</option>
-            </select>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="button" href="#" id="s0">Save Tab 1</button>
           </div>
-          <button class="btn btn-primary mb-2" id="saveSettings">Save Settings</button>
-        </form-->
+          <input type="text" class="form-control" id="t0" placeholder="BTC" aria-label="Coin0" aria-describedby="basic-addon1">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="button" href="#" id="s1">Save Tab 2</button>
+          </div>
+          <input type="text" class="form-control" id="t1" placeholder="BCH" aria-label="Coin1" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="button" href="#" id="s2">Save Tab 3</button>
+          </div>
+          <input type="text" class="form-control" id="t2" placeholder="LTC" aria-label="Coin2" aria-describedby="basic-addon1">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="button" href="#" id="s3">Save Tab 4</button>
+          </div>
+          <input type="text" class="form-control" id="t3" placeholder="ETH" aria-label="Coin3" aria-describedby="basic-addon1">
+        </div>
+        <div class="alert alert-info" role="alert" id="coinStatus">
+          <p>Coin Codes</p>
+          <pre><a>BTC: Bitcoin
+BCH: BTC Cash
+LTC: Litecoin
+ETH: Ethereum
+ZEC: ZCash
+ECH: ETH Classic
+XRP: Ripple
+TRX: Tronix
+DASH: DigitalCash</a></pre>
+        </div>
       </div>
     </div>
 
@@ -89,6 +106,7 @@
   <script src="./lib/Chart.min.js"></script>
   <script src="./lib/moment.min.js"></script>
   <script src="./lib/util.js"></script>
+  <script src="./lib/dict.js"></script>
 
   <script src="popup.js"></script>
 

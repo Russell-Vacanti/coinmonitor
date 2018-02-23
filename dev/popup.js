@@ -1,41 +1,20 @@
-const coinNames = {
-  "BTC": "Bitcoin",
-  "BCH": "Bitcoin Cash",
-  "LTC": "Litecoin",
-  "ETH": "Ethereum"
-};
-
-const coinHistTypes = {
-  'm': ['minute', 'histM'],
-  'h': ['hour', 'histH'],
-  'd': ['day', 'histD']
-};
-
-const coinColors = {
-  "BTC": {
-    'border': 'rgb(93, 173, 226)',
-    'background': 'rgb(174, 214, 241)'
-  },
-  "BCH": {
-    'border': 'rgb(165, 105, 189)',
-    'background': 'rgb(210, 180, 222)'
-  },
-  "LTC": {
-    'border': 'rgb(244, 208, 63)',
-    'background': 'rgb(249, 231, 159)'
-
-  },
-  "ETH": {
-    'border': 'rgb(86, 101, 115)',
-    'background': 'rgb(171, 178, 185)'
-
-  }
-}
-
 var coinChart = null;
 var coinDiff = 0;
 var coinBuy = 0;
 var coinTime = 'm';
+
+var coinTabs = ['BTC', 'BCH', 'LTC', 'ETH', 'SET'];
+
+const saveTabTo = (num) => {
+  var coinID = document.getElementById("t" + num).value;
+  for (var i = 0; i < coinIDs; i++) {
+    if (coinIDs[i] == coinID) {
+      saveData('TAB-' + num, coinNames[i]);
+      coinTabs[num] = coinNames[i];
+    }
+  }
+  document.getElementById("c" + num).innerText = coinNames[coinID];
+}
 
 const inquire = (cat, tp, callback) => {
   var apiUrl = "https://min-api.cryptocompare.com/data/";
@@ -140,19 +119,21 @@ const updateCoinCard = (typ) => {
 }
 
 const changeTab = (typ, forceUpdate = false) => {
+  console.log(typ);
+  console.log(coinTabs[parseFloat(typ)]);
   var old = null;
   getData('COIN', (re) => {
     old = re;
     if (typ !== old) {
-      document.getElementById(re).className = "nav-link";
+      document.getElementById("c" + re).className = "nav-link";
     }
-    document.getElementById(typ).className = "nav-link disabled"; //border-top border-left border-right";
+    document.getElementById("c" + typ).className = "nav-link disabled"; //border-top border-left border-right";
     saveData('COIN', typ);
     if (typ !== old || forceUpdate) {
-      if (typ == 'SET') {
-        updateSettingsCard(typ);
+      if (coinTabs[parseFloat(typ)] == 'SET') {
+        updateSettingsCard(coinTabs[parseFloat(typ)]);
       } else {
-        updateCoinCard(typ);
+        updateCoinCard(coinTabs[parseFloat(typ)]);
       }
     }
   });
@@ -164,20 +145,20 @@ const saveSettings = () => {
 
 const addListeners = () => {
   //add listeners for coin tabs
-  document.getElementById('BTC').addEventListener('click', () => {
-    changeTab('BTC');
+  document.getElementById('c0').addEventListener('click', () => {
+    changeTab('0');
   });
-  document.getElementById('BCH').addEventListener('click', () => {
-    changeTab('BCH');
+  document.getElementById('c1').addEventListener('click', () => {
+    changeTab('1');
   });
-  document.getElementById('LTC').addEventListener('click', () => {
-    changeTab('LTC');
+  document.getElementById('c2').addEventListener('click', () => {
+    changeTab('2');
   });
-  document.getElementById('ETH').addEventListener('click', () => {
-    changeTab('ETH');
+  document.getElementById('c3').addEventListener('click', () => {
+    changeTab('3');
   });
-  document.getElementById('SET').addEventListener('click', () => {
-    changeTab('SET');
+  document.getElementById('c4').addEventListener('click', () => {
+    changeTab('4');
   });
   //add listeners for graph
   document.getElementById('histM').addEventListener('click', () => {
@@ -201,27 +182,45 @@ const addListeners = () => {
       url: 'https://github.com/Russell-Vacanti/coinmonitor'
     });
   });
-  //button to open changelog
-  document.getElementById('chnTab').addEventListener('click', () => {
-    chrome.tabs.create({
-      url: 'https://github.com/Russell-Vacanti/coinmonitor/commits/master'
-    });
-  });
 
-  //button to save settings
-  //document.getElementById('saveSettings').addEventListener('click', () => {saveSettings();});
+  //buttons to save tab settings
+  document.getElementById('s0').addEventListener('click', () => {
+    saveTabTo('0');
+  });
+  document.getElementById('s1').addEventListener('click', () => {
+    saveTabTo('1');
+  });
+  document.getElementById('s2').addEventListener('click', () => {
+    saveTabTo('2');
+  });
+  document.getElementById('s3').addEventListener('click', () => {
+    saveTabTo('3');
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  saveData('COIN', 'BTC');
+  saveData('COIN', '0');
   saveData('HIST', 'm');
+
+  getData('TAB-0', deft = 'BTC', (vle) => {
+    coinTabs[0] = vle;
+  });
+  getData('TAB-1', deft = 'BCH', (vle) => {
+    coinTabs[1] = vle;
+  });
+  getData('TAB-2', deft = 'LTC', (vle) => {
+    coinTabs[2] = vle;
+  });
+  getData('TAB-3', deft = 'ETH', (vle) => {
+    coinTabs[3] = vle;
+  });
 
   addListeners();
   getData('DEF-COIN', (typ) => {
     console.log(typ);
     if (typ == undefined) {
-      saveData('DEF-COIN', 'BTC');
-      changeTab('BTC');
+      saveData('DEF-COIN', '0');
+      changeTab('0');
     } else {
       changeTab(typ);
     }
