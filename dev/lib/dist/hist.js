@@ -46,8 +46,6 @@ const initCoinChart = (typ) => {
       prices.push(data[i]['high']);
       labelData.push("Timestamp: " + data[i]['time']);
     }
-    console.log("CHART DATA\n=======================");
-    console.log(prices);
     makeChart(prices, labelData, typ);
   });
 }

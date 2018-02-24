@@ -3,7 +3,7 @@
 
   "name": "Coin Monitor [DEV]",
   "description": "Track the prices of cryptocurrency quickly",
-  "version": "1.8",
+  "version": "1.9",
   "icons" :
   {
     "128" : "icon_new.png"

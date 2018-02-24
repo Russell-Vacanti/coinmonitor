@@ -41,22 +41,18 @@ const updateCoinCard = (typ) => {
 
   initCoinChart(typ);
 
-  document.getElementById("coinBuy").innerText = "Error Getting Price Data";
-  document.getElementById("coinStatus").className = "alert alert-dark";
+  document.getElementById("coinBuy").innerText = "loading...";
+  document.getElementById("coinStatus").className = "alert alert-secondary";
   //hide chart if no price data
   document.getElementById('chartHolder').style.display = 'none';
+
+  var coinPrice = '-';
   inquire(typ, 'price', (result) => {
     //show chart when we get price data back
     document.getElementById('chartHolder').style.display = 'block';
+    document.getElementById("coinStatus").className = "alert alert-warning";
     data = result['USD'];
     document.getElementById("coinBuy").innerText = "$" + data;
-    if (0 < 0) {
-      document.getElementById("coinStatus").className = "alert alert-success";
-    } else if (0 > 0) {
-      document.getElementById("coinStatus").className = "alert alert-danger";
-    } else {
-      document.getElementById("coinStatus").className = "alert alert-warning";
-    }
   });
 }
 
