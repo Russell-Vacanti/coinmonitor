@@ -6,10 +6,10 @@
   "version": "1.9",
   "icons" :
   {
-    "128" : "icon_new.png"
+    "128" : "./lib/icons/icon_dev.png"
   },
   "browser_action": {
-    "default_icon": "icon_new.png",
+    "default_icon": "./lib/icons/icon_dev.png",
     "default_popup": "popup.html"
   },
   "permissions": [
