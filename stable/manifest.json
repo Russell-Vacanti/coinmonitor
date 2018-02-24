@@ -3,13 +3,13 @@
 
   "name": "Coin Monitor",
   "description": "Track the prices of cryptocurrency quickly",
-  "version": "1.0",
+  "version": "1.8",
   "icons" :
   {
-    "128" : "icon.png"
+    "128" : "icon_new.png"
   },
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "icon_new.png",
     "default_popup": "popup.html"
   },
   "permissions": [
