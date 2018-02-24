@@ -2,6 +2,10 @@ var coinChart = null;
 var coinTime = 'm';
 
 const makeChart = (data, labels, typ) => {
+  //get coin color data
+  var colorBG = (typ in coinColors ? coinColors[typ]['background'] : coinColors['OTHER']['background']);
+  var colorBR = (typ in coinColors ? coinColors[typ]['border'] : coinColors['OTHER']['border']);
+
   if (coinChart) {
     coinChart.destroy();
     coinChart = null;
@@ -11,8 +15,8 @@ const makeChart = (data, labels, typ) => {
     datasets: [{
       label: "Price",
       data: data,
-      backgroundColor: coinColors[typ]['background'],
-      borderColor: coinColors[typ]['border']
+      backgroundColor: colorBG,
+      borderColor: colorBR
     }]
   };
   var ctx = document.getElementById('coinChart');
@@ -42,6 +46,8 @@ const initCoinChart = (typ) => {
       prices.push(data[i]['high']);
       labelData.push("Timestamp: " + data[i]['time']);
     }
+    console.log("CHART DATA\n=======================");
+    console.log(prices);
     makeChart(prices, labelData, typ);
   });
 }

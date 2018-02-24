@@ -42,10 +42,10 @@ const coinColors = {
     'background': 'rgb(249, 231, 159)'
   },
   "ETH": {
-    'border': 'rgb(86, 101, 115)',
-    'background': 'rgb(171, 178, 185)'
+    'border': 'rgb(88, 214, 141)',
+    'background': 'rgb(171, 235, 198)'
   },
-  "ETH": {
+  "OTHER": {
     'border': 'rgb(86, 101, 115)',
     'background': 'rgb(171, 178, 185)'
   }
